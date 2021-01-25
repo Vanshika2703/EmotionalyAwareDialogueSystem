@@ -1,4 +1,9 @@
 from collections import ChainMap
+import nltk
+
+sentence = """My dog died today"""
+
+
 class Instance:
   def __init__(self, sentence, context, dateTime, emotion, Intensity):
     self.sentence = sentence
