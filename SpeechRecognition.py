@@ -1,5 +1,6 @@
 import speech_recognition as sr
-import nltk
+import extraction as key
+import sys
 
 r = sr.Recognizer()
 
@@ -14,9 +15,10 @@ def startListening():
             try:
                 text = r.recognize_google(audio)
                 print('You said : {}'.format(text))
-                print(nltk.pos_tag(nltk.word_tokenize(text)))
+                key.extractInfo(text)
             except:
-                print('Sorry couldn\'t recognize your voice')
+                print('Sorry couldn\'t recognize your voice', sys.exc_info()[0])
+
 
 # the second part of the implementation in this file would be text to speech so as to give responses
 

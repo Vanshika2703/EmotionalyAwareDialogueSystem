@@ -2,16 +2,35 @@ from collections import ChainMap
 import nltk
 #import wordnet.py as wn
 
-sentence = """My dog died today"""
+emotionalState = 000
+keywords = []
+sentence = ""
+dateTime = None
 
+
+def setKeywords(keywordList):
+  print(keywordList)
+  keywords = keywordList
+
+
+def setSentence(line):
+  print(line)
+  sentence = line
+
+ 
+def setEmotionalState(detectedState):
+  emotionalState = detectedState 
+
+def setDateTime(time):
+  print(time)
+  dateTime = time
 
 class Instance:
-  def __init__(self, sentence, context, dateTime, emotion, Intensity):
+  def __init__(self, sentence, context, dateTime, emotionalState):
     self.sentence = sentence
     self.context = context #all the keywords
     self.dateTime = dateTime #recorded by system
-    self.emotion = emotion #from the analysis step
-    self.Intensity = Intensity #from the analysis step
+    self.emotionalState = emotionalState #from analysis step
     self.duration = 0 #will be initialized to zero ad updated when there is an emotion change
     self.changedEmotion = None #will be initialized to null
     self.instanceChanged = None #will be initialized to null
@@ -31,17 +50,13 @@ class Instance:
     
 mentalModel = {}
 
-def updateModel(sentence, keywords, dateTime, emotion,Intensity):
+def updateModel():
   # use created instance
   for word in keywords:
     if word in mentalModel.keys():
-      mentalModel[word].append(Instance(sentence,keywords,dateTime,emotion,Intensity))
+      mentalModel[word].append(Instance(sentence,keywords,dateTime,emotionalState))
     else:
-      mentalModel[word] = [Instance(sentence,keywords,dateTime,emotion,Intensity)]
+      mentalModel[word] = [Instance(sentence,keywords,dateTime,emotionalState)]
   for x in mentalModel.values():
     for y in x:
       print(y.display())
-
-
-updateModel("I have a dog",['have','dog'],"1/13/2021 11:58","happy","5")
-updateModel("I have a cat",['have','cat'],"1/13/2021 11:58","happy","5")
