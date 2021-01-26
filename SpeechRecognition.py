@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import extraction as key
 import sys
+import pyttsx3
+
 
 r = sr.Recognizer()
 
@@ -24,6 +26,11 @@ def startListening():
 
 def main():
     # call initial greeting.
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[1].id)
+    engine.say("Hello Dr.Wollowski! My name is Ahaana. I am a little nervous because this is my first demo and I can only update the mental model so far. wish me luck! Thank you!")
+    engine.runAndWait()
     startListening()
 
 main()

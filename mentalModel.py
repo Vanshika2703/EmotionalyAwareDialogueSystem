@@ -9,12 +9,12 @@ dateTime = None
 
 
 def setKeywords(keywordList):
-  print(keywordList)
+  print("Keywords >>> ",keywordList)
   keywords = keywordList
 
 
 def setSentence(line):
-  print(line)
+  print("Sentence >>> ",line)
   sentence = line
 
  
@@ -22,7 +22,7 @@ def setEmotionalState(detectedState):
   emotionalState = detectedState 
 
 def setDateTime(time):
-  print(time)
+  print("date and time >>> ",time)
   dateTime = time
 
 class Instance:
@@ -36,8 +36,7 @@ class Instance:
     self.instanceChanged = None #will be initialized to null
   
   def display(self):
-      print("sentence: "+ self.sentence +", context: ")
-      print(self.context)
+      print("sentence: "+ self.sentence +", context: ", self.context," Emotion: ", self.emotionalState)
 
   def updateDuration(self, duration):
     self.duration = duration
@@ -50,13 +49,18 @@ class Instance:
     
 mentalModel = {}
 
+def printVals(vals):
+  for x in vals:
+    for y in x:
+      print(y.display())
+  
+
 def updateModel():
   # use created instance
   for word in keywords:
+    print("word >>>> ",word)
     if word in mentalModel.keys():
       mentalModel[word].append(Instance(sentence,keywords,dateTime,emotionalState))
     else:
       mentalModel[word] = [Instance(sentence,keywords,dateTime,emotionalState)]
-  for x in mentalModel.values():
-    for y in x:
-      print(y.display())
+  printVals(mentalModel.values())
