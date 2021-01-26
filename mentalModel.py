@@ -1,5 +1,6 @@
 from collections import ChainMap
 import nltk
+#import wordnet.py as wn
 
 sentence = """My dog died today"""
 
@@ -26,8 +27,7 @@ class Instance:
     self.changedEmotion = changedEmotion
 
   def updateInstanceChanged(self, instanceChanged):
-    self.instanceChanged = instanceChanged
-  
+    self.instanceChanged = instanceChanged  
     
 mentalModel = {}
 

@@ -1,5 +1,3 @@
-
-#%%import nltk 
 # %%
 from nltk.corpus import wordnet as wn
 # %%
@@ -20,5 +18,9 @@ cat = wn.synset('cat.n.01')
 # %%
 animal.path_similarity(cat)
 # %%
-
+print(nltk.tokenize("""I am tired"""))
+# %%
+from nltk import NLTKWordTokenizer as tokenize
+# %%
+tokenize.tokenize("""I am tired""")
 # %%
