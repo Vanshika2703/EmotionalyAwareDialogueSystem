@@ -2,28 +2,28 @@ from collections import ChainMap
 import nltk
 #import wordnet.py as wn
 
-emotionalState = 000
-keywords = []
-sentence = ""
-dateTime = None
+# emotionalState = 000
+# keywords = []
+# sentence = ""
+# dateTime = None
 
 
-def setKeywords(keywordList):
-  print("Keywords >>> ",keywordList)
-  keywords = keywordList
+# def setKeywords(keywordList):
+#   print("Keywords >>> ",keywordList)
+#   keywords = keywordList
 
 
-def setSentence(line):
-  print("Sentence >>> ",line)
-  sentence = line
+# def setSentence(line):
+#   print("Sentence >>> ",line)
+#   sentence = line
 
  
-def setEmotionalState(detectedState):
-  emotionalState = detectedState 
+# def setEmotionalState(detectedState):
+#   emotionalState = detectedState 
 
-def setDateTime(time):
-  print("date and time >>> ",time)
-  dateTime = time
+# def setDateTime(time):
+#   print("date and time >>> ",time)
+#   dateTime = time
 
 class Instance:
   def __init__(self, sentence, context, dateTime, emotionalState):
@@ -55,12 +55,26 @@ def printVals(vals):
       print(y.display())
   
 
-def updateModel():
+# def updateModel():
+#   # use created instance
+#   for word in keywords:
+#     print("word >>>> ",word)
+#     if word in mentalModel.keys():
+#       mentalModel[word].append(Instance(sentence,keywords,dateTime,emotionalState))
+#     else:
+#       mentalModel[word] = [Instance(sentence,keywords,dateTime,emotionalState)]
+  printVals(mentalModel.values())
+
+  
+def updateModel(sentence, keywords):
   # use created instance
   for word in keywords:
     print("word >>>> ",word)
     if word in mentalModel.keys():
-      mentalModel[word].append(Instance(sentence,keywords,dateTime,emotionalState))
+      mentalModel[word].append(Instance(sentence,keywords,"2/2/2021",100))
     else:
-      mentalModel[word] = [Instance(sentence,keywords,dateTime,emotionalState)]
+      mentalModel[word] = [Instance(sentence,keywords,"2/2/2021",100)]
   printVals(mentalModel.values())
+
+
+updateModel("My dog died today",["My","dog","died"])
