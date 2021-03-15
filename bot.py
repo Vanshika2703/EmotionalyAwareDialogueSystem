@@ -2,7 +2,7 @@ import spacy
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
-app= Flask(__name__)
+app = Flask(__name__)
 nlp = spacy.load("en_core_web_sm")
 
 english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
@@ -19,4 +19,4 @@ def get_bot_response():
     return str(english_bot.get_response(userText))
 
 if __name__ == '__main__':
-    bot.run()
+    app.run()
